@@ -15,20 +15,40 @@
 </style> -->
 
 <template>
-  <h1>Turnos App</h1>
-  <HomeForm @update:selectedService="handleSelectedService"></HomeForm>
-  <p>Selected Service ID: {{ selectedService }}</p>
+  <!-- <h1>Turnos App</h1>
+  <HomeForm @update:selectedWeek="handleSelectedWeek"></HomeForm>
+  <div v-if="selectedWeek">
+  <v-container>
+      <v-row>
+        <v-col>
+          <v-btn to="/availability">
+            Availavility
+          </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn to="/availability">
+            Availavility
+          </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn to="/availability">
+            Availavility
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div> -->
 </template>
 
 <script setup>
-import HomeForm from '@/components/HomeForm.vue';
-import { ref } from 'vue';
+// import HomeForm from '@/components/HomeForm.vue';
+// import { ref } from 'vue';
 
-const selectedService = ref(null);
+// const selectedWeek = ref(null);
 
-const handleSelectedService = (serviceId) => {
-  selectedService.value = serviceId;
-};
+// const handleSelectedWeek = (weekId) => {
+//   selectedWeek.value = weekId;
+// };
 </script>
 
 <style scoped>

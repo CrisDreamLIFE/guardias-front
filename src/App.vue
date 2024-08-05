@@ -1,98 +1,46 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+import HomeForm from '@/components/HomeForm.vue';
+import { ref } from 'vue';
+const router = useRouter();
+
+const selectedWeek = ref(null);
+
+const handleSelectedWeek = (weekId) => {
+  selectedWeek.value = weekId;
+};
+
+const goToAvailability = () => {
+  if (selectedWeek.value) {
+    router.push({ name: 'availability', params: { weekId: selectedWeek.value } });
+  }
+};
 </script>
 
 <template>
-  <header>
-    <v-container>
-      <v-row>
-        <v-col>
-          <v-btn to="/">
-            Home
-          </v-btn>
-        </v-col>
-        <v-col>
-          <v-btn to="/availability">
-            Availavility
-          </v-btn>
-        </v-col>
-        <v-col>
-          <v-btn to="/availability">
-            Availavility
-          </v-btn>
-        </v-col>
-        <v-col>
-          <v-btn to="/availability">
-            Availavility
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </header>
-
-  <RouterView />
+  <h1>Turnos App</h1>
+  <HomeForm @update:selectedWeek="handleSelectedWeek"></HomeForm>
+  <div v-if="selectedWeek">
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-btn @click="goToAvailability" :disabled="!selectedWeek">Disponibilidad</v-btn>
+      </v-col>
+      <v-col>
+        <v-btn to="/availability">
+          Disponibilidad
+        </v-btn>
+      </v-col>
+      <v-col>
+        <v-btn to="/availability">
+          Availavility
+        </v-btn>
+      </v-col>
+    </v-row>
+    <RouterView />
+  </v-container>
+  </div>
 </template>
 
 <style scoped>
-/* header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-} */
 </style>

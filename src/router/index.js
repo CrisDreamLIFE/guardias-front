@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/availability',
+      path: '/availability/:weekId',
       name: 'availability',
       component: () => import('../views/AvailabilityView.vue')
     }
