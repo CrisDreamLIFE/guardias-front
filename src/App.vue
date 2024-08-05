@@ -15,6 +15,18 @@ const goToAvailability = () => {
     router.push({ name: 'availability', params: { weekId: selectedWeek.value } });
   }
 };
+
+const goToAssignedShifts = () => {
+  if (selectedWeek.value) {
+    router.push({ name: 'assignedShifts', params: { weekId: selectedWeek.value } });
+  }
+};
+
+const goToSummary = () => {
+  if (selectedWeek.value) {
+    router.push({ name: 'summary', params: { weekId: selectedWeek.value } });
+  }
+}
 </script>
 
 <template>
@@ -27,9 +39,10 @@ const goToAvailability = () => {
         <v-btn @click="goToAvailability" :disabled="!selectedWeek">Disponibilidad</v-btn>
       </v-col>
       <v-col>
-        <v-btn to="/availability">
-          Disponibilidad
-        </v-btn>
+        <v-btn @click="goToAssignedShifts" :disabled="!selectedWeek">Turnos Asignados </v-btn>
+      </v-col>
+      <v-col>
+        <v-btn @click="goToSummary" :disabled="!selectedWeek">Resumen </v-btn>
       </v-col>
       <v-col>
         <v-btn to="/availability">
