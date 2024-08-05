@@ -23,7 +23,13 @@ const router = createRouter({
       path: '/summary/:weekId',
       name: 'summary',
       component: () => import('../views/SummaryView.vue')
+    },
+    {
+      path: '/editAvailability/:weekId',
+      name: 'editAvailability',
+      component: () => import('../views/EditAvailabilityView.vue')
     }
+    
   ]
 })
 
