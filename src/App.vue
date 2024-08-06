@@ -1,7 +1,31 @@
+<template>
+  <h1 class="text-center">Turnos App</h1>
+  <HomeForm @update:selectedWeek="handleSelectedWeek"></HomeForm>
+  <div v-if="selectedWeek">
+    <v-container>
+      <v-row>
+        <v-col>
+          <v-btn @click="goToAvailability" :disabled="!selectedWeek">Disponibilidad</v-btn>
+        </v-col>
+        <v-col>
+          <v-btn @click="goToAssignedShifts" :disabled="!selectedWeek">Turnos Asignados </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn @click="goToSummary" :disabled="!selectedWeek">Resumen </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn @click="goToEditAbailability" :disabled="!selectedWeek">Editar Disponibilidad </v-btn>
+        </v-col>
+      </v-row>
+      <RouterView />
+    </v-container>
+  </div>
+</template>
+
 <script setup>
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import HomeForm from '@/components/HomeForm.vue';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 const router = useRouter();
 
 const selectedWeek = ref(null);
@@ -34,29 +58,3 @@ const goToEditAbailability = () => {
   }
 }
 </script>
-
-<template>
-  <h1>Turnos App</h1>
-  <HomeForm @update:selectedWeek="handleSelectedWeek"></HomeForm>
-  <div v-if="selectedWeek">
-    <v-container>
-      <v-row>
-        <v-col>
-          <v-btn @click="goToAvailability" :disabled="!selectedWeek">Disponibilidad</v-btn>
-        </v-col>
-        <v-col>
-          <v-btn @click="goToAssignedShifts" :disabled="!selectedWeek">Turnos Asignados </v-btn>
-        </v-col>
-        <v-col>
-          <v-btn @click="goToSummary" :disabled="!selectedWeek">Resumen </v-btn>
-        </v-col>
-        <v-col>
-          <v-btn @click="goToEditAbailability" :disabled="!selectedWeek">Editar Disponibilidad </v-btn>
-        </v-col>
-      </v-row>
-      <RouterView />
-    </v-container>
-  </div>
-</template>
-
-<style scoped></style>

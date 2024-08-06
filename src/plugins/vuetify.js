@@ -1,7 +1,7 @@
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import { VApp, VAppBar, VMain, VContainer, VRow, VCol, VCheckbox, VBtn, VProgressCircular, VSelect } from 'vuetify/components'
+import { VApp, VAppBar, VMain, VContainer, VRow, VCol, VCheckbox, VBtn, VProgressCircular, VSelect, VCard } from 'vuetify/components'
 
 
 const vuetify = createVuetify({
@@ -17,6 +17,7 @@ const vuetify = createVuetify({
     VBtn,
     VProgressCircular,
     VSelect,
+    VCard,
   },
 })
 

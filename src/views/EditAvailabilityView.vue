@@ -1,13 +1,14 @@
 <template>
   <v-container>
-    <h1>Editar Disponibilidad de Ingenieros</h1>
+    <h1 class="mt-10 mb-10">Editar Disponibilidad de Ingenieros</h1>
     <div v-if="loading" class="text-center">
       <v-progress-circular indeterminate></v-progress-circular>
     </div>
     <v-form v-else>
       <v-row v-for="day in data.days" :key="day.id" class="mb-4">
         <v-col lg="12">
-          <h3>{{ day.label }}</h3>
+          <h2>{{ day.label }}</h2>
+          <br>
           <v-row v-for="block in day.blocks" :key="block.id">
             <v-col lg="3">
               {{ block.start_time.split('T')[1].split('.')[0] }} - {{ block.end_time.split('T')[1].split('.')[0] }}
@@ -18,6 +19,7 @@
                   <v-checkbox color="indigo-darken-3" v-model="engineer.available" :label="engineer.name"></v-checkbox>
                 </v-col>
               </v-row>
+              <hr />
             </v-col>
           </v-row>
         </v-col>
@@ -34,6 +36,7 @@ import { useRoute } from 'vue-router';
 
 const data = ref({});
 const route = useRoute();
+const loading = ref(true);
 
 const fetchAvailability = async (weekId) => {
   try {
@@ -43,14 +46,15 @@ const fetchAvailability = async (weekId) => {
     }
     const result = await response.json();
     data.value = result;
+    loading.value = false;
   } catch (error) {
     console.error('Error fetching availability:', error);
+    loading.value = false;
   }
 };
 
 const saveAvailability = async () => {
   try {
-    console.log("fsdfouhsdjfsfl")
     const payload = {
       days: data.value.days.map(day => ({
         id: day.id,
@@ -82,3 +86,13 @@ onMounted(() => {
   fetchAvailability(weekId);
 });
 </script>
+
+<style scoped>
+.border {
+  border-color: black !important;
+  border-width: 1px !important;
+  border-style: solid;
+  margin-bottom: 11px;
+  margin-right: -1px;
+}
+</style>
