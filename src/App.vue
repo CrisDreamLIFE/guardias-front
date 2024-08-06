@@ -23,9 +23,9 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import HomeForm from '@/components/HomeForm.vue';
-import { ref, watchEffect } from 'vue';
+import { ref } from 'vue';
 const router = useRouter();
 
 const selectedWeek = ref(null);

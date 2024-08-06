@@ -41,7 +41,7 @@ const fetchServices = async () => {
 
 const fetchWeeks = async () => {
   try {
-    const response = await fetch('http://localhost:3000/services/' + selectedService + '/weeks');
+    const response = await fetch('http://localhost:3000/services/' + selectedService.value + '/weeks');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }

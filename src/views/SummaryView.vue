@@ -30,7 +30,7 @@
                 <p>{{ engineer.name }}</p>
               </v-col>
             </v-row>
-            <div v-for="(block, index) in days.blocks" :key="block.id">
+            <div v-for="(block) in days.blocks" :key="block.id">
               <v-row>
                 <v-col class="border"
                   :class="{ 'bg-red': block.engineer == null, 'bg-green': block.engineer != null }">{{
